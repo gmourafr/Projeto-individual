@@ -1,6 +1,6 @@
 # 🚗 Projeto Individual — BMW
 
-Um projeto web desenvolvido com o objetivo de apresentar a história da BMW, permitir que o usuário escolha sua BMW favorita e compartilhar um pouco do motivo pessoal por trás da escolha do tema.
+Um projeto web desenvolvido com o objetivo de apresentar um pouco sobre a marca BMW, permitir que o usuário escolha sua BMW favorita e compartilhar um pouco do motivo pessoal por trás da escolha do tema.
 
 ---
 
