@@ -4,7 +4,7 @@ Um projeto web desenvolvido com o objetivo de apresentar um pouco sobre a marca 
 
 ---
 
-## 🎓 Projeto acadêmico — São Paulo Tech School
+## 🎓 Projeto Individual — São Paulo Tech School
 
 ---
 
