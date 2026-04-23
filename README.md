@@ -1,6 +1,6 @@
-# 🚗 Projeto Individual — BMW
+# 🎯 Projeto Individual — CS2 - FalleN
 
-Um projeto web desenvolvido com o objetivo de apresentar um pouco sobre a marca BMW, permitir que o usuário escolha sua BMW favorita e compartilhar um pouco do motivo pessoal por trás da escolha do tema.
+Um projeto web desenvolvido com o objetivo de apresentar a história de Gabriel "FalleN" Toledo, jogador da FURIA Esports, com quiz, calculadora e curiosidades sobre um dos maiores nomes do Counter-Strike.
 
 ---
 
@@ -8,4 +8,4 @@ Um projeto web desenvolvido com o objetivo de apresentar um pouco sobre a marca 
 
 ---
 
-## 📌 Trello: [clique aqui](https://trello.com/b/QCUqUwIT/projeto-individual-bmw)
+## 📌 Trello: [clique aqui](https://trello.com/b/3xaN0hEp/fallen-counter-strike-2)
