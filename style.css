@@ -1,0 +1,215 @@
+  
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap');
+
+  body {
+    background: #0a0a0a;
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+header {
+    background: #000;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: #fff;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    margin-left: 24px;
+    font-size: 16px;
+   
+   
+}
+
+.card {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 32px 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    
+   
+  
+}
+
+
+.hero {
+    background-image: url('imagens/fallen-na-furia-csgo.jpg');
+    
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    padding-bottom: 40px;
+}
+  .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      
+    
+  }
+
+  .hero p {
+      color: #ddd;
+      font-size: 16px;
+      margin-top: 8px;
+      
+  }
+
+  .sobre {
+      padding: 40px 24px;
+      max-width: 700px;
+      margin: 0 auto;
+  }
+
+  .sobre h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+  .sobre p {
+      color: #bbb;
+      line-height: 1.8;
+      font-size: 15px;
+  }
+
+  .cards {
+      display: grid;
+      gap: 12px;
+      padding: 0 24px 40px;
+      max-width: 700px;
+      margin: 0 auto;
+  }
+
+  .card {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 20px 16px;
+      text-align: center;
+  }
+
+  .card:hover {
+      border-color: #fff;
+  }
+
+  .card .icon {
+      font-size: 22px;
+      margin-bottom: 8px;
+  }
+
+  .card span {
+      font-size: 13px;
+      color: #aaa;
+  }
+
+  footer {
+      background: #000;
+      border-top: 1px solid #222;
+      text-align: center;
+      padding: 16px;
+      color: #555;
+      font-size: 12px;
+  }
+
+
+
+
+
+ .calculadora {
+    max-width: 500px;
+    margin: 60px auto;
+    text-align: center;
+}
+
+.calculadora h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.subtitulo {
+    color: #aaa;
+    font-size: 15px;
+    margin-bottom: 32px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.campo label {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 6px;
+}
+
+.campo input {
+    padding: 10px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.calculadora button {
+    margin-top: 8px;
+    padding: 12px 32px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.calculadora button:hover {
+    background: #ccc;
+}
+
+.resultado {
+    margin-top: 32px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 24px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+.fotos {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 32px 24px 0;
+}
+
+
+
