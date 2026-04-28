@@ -3,7 +3,7 @@
 
 ---
 
-Um projeto web desenvolvido com o objetivo de apresentar a história de Gabriel "FalleN" Toledo, jogador da FURIA Esports, com quiz, calculadora e curiosidades sobre um dos maiores nomes do Counter-Strike.
+Um projeto individual desenvolvido com o objetivo de apresentar a história de Gabriel "FalleN" Toledo, jogador da FURIA Esports, com quiz, calculadora e curiosidades sobre um dos maiores nomes da história do Counter-Strike.
 
 ---
 
