@@ -36,8 +36,6 @@ function calcular() {
 
 
 
-
-
         function entrar() {
             let email = email_input.value
             let senha = senha_input.value
@@ -51,7 +49,7 @@ function calcular() {
                 if (email == emailSalvo) {
                     div_msg.innerHTML = `bem-vindo de volta, ${nome}! redirecionando...`
                     setTimeout(() => {
-                        window.location = 'dashboard.html'
+                        window.location = 'dashboard/dashboard.html'
                     }, 2000)
                 } else {
                     div_msg.innerHTML = `e-mail ou senha incorretos!`
@@ -59,4 +57,6 @@ function calcular() {
             }
         }
     
+
+
 

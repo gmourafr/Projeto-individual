@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora k/d - FalleN</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" type="image/png" href="./assets/imgs/badfallen.png">
+</head>
+
+        
+    
+<body>
+
+    <header>
+        <div class="logo">FALLEN - PROFESSOR.</div>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="historia.html">HISTÓRIA</a>
+            <a href="calculadorakd.html">CONQUISTAS</a>
+            <a href="cadastro.html">CADASTRO</a>
+        </nav>
+    </header>
+
+    <div class="calculadora">
+        <h1>CALCULE SEU K/D</h1>
+        <p class="subtitulo">descubra o que o FalleN acha do seu desempenho</p>
+
+        <div class="campo">
+            kills
+            <input type="number" id="ipt_kills" placeholder="ex: 15" min="0">
+        </div>
+
+        <div class="campo">
+            mortes
+            <input type="number" id="ipt_mortes" placeholder="ex: 12" min="0">
+        </div>
+
+        <button onclick="calcular()">calcular</button>
+
+        <div id="div_resultado" class="resultado"></div>
+    </div>
+
+    
+
+
+
+</body>
+
+</html>
+
+<script src="./js/main.js"></script>
