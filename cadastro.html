@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastro - FalleN</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./assets/imgs/badfallen.png">
+</head>
+<body>
+    <header>
+      
+        <div class="logo">FURIA</div>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="historia.html">HISTÓRIA</a>
+            <a href="calculadora.html">CALCULADORA</a>
+            <a href="conquistas.html">CONQUISTAS</a>
+            <a href="login.html">LOGIN</a>
+        </nav>
+    </header>
+
+    <div class="pagina-cadastro">
+        <div class="card-cadastro">
+            <h2>criar conta</h2>
+
+            <div class="campo">
+                <label>nome</label>
+                <input type="text" id="nome_input" placeholder="seu nome">
+            </div>
+            <div class="campo">
+                <label>e-mail</label>
+                <input type="text" id="email_input" placeholder="seuemail@email.com">
+            </div>
+            <div class="campo">
+                <label>senha</label>
+                <input type="password" id="senha_input" placeholder="******">
+            </div>
+            <div class="campo">
+                <label>confirmar senha</label>
+                <input type="password" id="confirmacao_senha_input" placeholder="******">
+            </div>
+
+            <button onclick="cadastrar()">cadastrar</button>
+
+            <div id="div_msg"></div>
+
+            <p class="link-login">já tem conta? <a href="login.html">entrar</a></p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        function cadastrar() {
+            let nome = nome_input.value
+            let email = email_input.value
+            let senha = senha_input.value
+            let confirmacao = confirmacao_senha_input.value
+
+            if (nome == '' || email == '' || senha == '' || confirmacao == '') {
+                div_msg.innerHTML = `preencha todos os campos!`
+            } else if (senha != confirmacao) {
+                div_msg.innerHTML = `as senhas não coincidem!`
+            } else {
+                sessionStorage.setItem('NOME_USUARIO', nome)
+                sessionStorage.setItem('EMAIL_USUARIO', email)
+                div_msg.innerHTML = `cadastro realizado! redirecionando...`
+                setTimeout(() => {
+                    window.location = 'login.html'
+                }, 2000)
+            }
+        }
+    </script>
+
+</body>
+</html>
