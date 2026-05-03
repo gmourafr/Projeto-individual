@@ -42,6 +42,27 @@
 
    
 
-<script src="./js/main.js"></script>
+<script>
+function entrar() {
+    let email = email_input.value
+    let senha = senha_input.value
+
+    if (email == '' || senha == '') {
+        div_msg.innerHTML = `preencha todos os campos!`
+    } else {
+        let nome = sessionStorage.getItem('NOME_USUARIO')
+        let emailsalvo = sessionStorage.getItem('EMAIL_USUARIO')
+
+        if (email == emailsalvo) {
+            div_msg.innerHTML = `bem-vindo de volta, ${nome}! redirecionando...`
+            setTimeout(() => {
+                window.location = 'dashboard/dashboard.html'
+            }, 2000)
+        } else {
+            div_msg.innerHTML = `e-mail ou senha incorretos!`
+        }
+    }
+}
+</script>
 </body>
 </html>

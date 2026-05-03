@@ -75,26 +75,6 @@ function calcular() {
 
 
 
-function entrar() {
-    let email = email_input.value
-    let senha = senha_input.value
-
-    if (email == '' || senha == '') {
-        div_msg.innerHTML = `preencha todos os campos!`
-    } else {
-        let nome = sessionStorage.getItem('NOME_USUARIO')
-        let emailSalvo = sessionStorage.getItem('EMAIL_USUARIO')
-
-        if (email == emailSalvo) {
-            div_msg.innerHTML = `bem-vindo de volta, ${nome}! redirecionando...`
-            setTimeout(() => {
-                window.location = 'dashboard/dashboard.html'
-            }, 2000)
-        } else {
-            div_msg.innerHTML = `e-mail ou senha incorretos!`
-        }
-    }
-}
 
 
 
