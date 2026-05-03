@@ -307,3 +307,15 @@ nav a {
 }
 
 
+.card_erro {
+    display: none;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
