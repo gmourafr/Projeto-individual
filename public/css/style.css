@@ -319,3 +319,305 @@ nav a {
     width: 100%;
     box-sizing: border-box;
 }
+
+
+
+
+
+
+/* PARTE CONQUISTAS */
+
+
+
+        .conquistas-hero {
+            text-align: center;
+            padding: 80px 20px 50px;
+            border-bottom: 1px solid #222;
+        }
+ 
+        .conquistas-hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+ 
+        .conquistas-hero p {
+            color: #aaa;
+            font-size: 18px;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+ 
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+ 
+        .hero-stat span {
+            display: block;
+            font-size: 52px;
+            font-weight: 700;
+            color: #fff;
+        }
+ 
+        .hero-stat p {
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #555;
+            margin-top: 4px;
+        }
+ 
+        
+        .conq-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+ 
+        .conq-section:last-child {
+            border-bottom: none;
+        }
+ 
+        .conq-section-title {
+            font-size: 13px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+ 
+ 
+       
+        .majors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+ 
+    
+ 
+        .major-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+ 
+        .major-card:hover {
+            border-color: #fff;
+        }
+ 
+        .major-card img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.75);
+            transition: filter 0.3s, transform 0.3s;
+        }
+ 
+        .major-card:hover img {
+            filter: brightness(1);
+            transform: scale(1.02);
+        }
+ 
+        .major-info {
+            padding: 16px 20px 20px;
+        }
+ 
+        .major-badge {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 6px;
+        }
+ 
+        .major-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+        }
+ 
+        .major-team {
+            font-size: 15px;
+            color: #aaa;
+            margin-top: 4px;
+        }
+ 
+      
+        .team-block {
+            margin-bottom: 44px;
+        }
+ 
+        .team-header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #222;
+        }
+ 
+        .team-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+ 
+        .team-years {
+            font-size: 13px;
+            color: #555;
+            letter-spacing: 2px;
+        }
+ 
+        .trophy-list {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+ 
+        .trophy-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            transition: border-color 0.2s;
+        }
+ 
+        .trophy-item:hover {
+            border-color: #fff;
+        }
+ 
+        .trophy-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+ 
+        .trophy-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: #fff;
+        }
+ 
+        .major-tag {
+            display: inline-block;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #000;
+            background: #fff;
+            padding: 1px 6px;
+            border-radius: 2px;
+            margin-left: 6px;
+            vertical-align: middle;
+            font-weight: 700;
+        }
+ 
+      
+        .hltv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+ 
+        .hltv-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 28px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            transition: border-color 0.2s;
+        }
+ 
+        .hltv-card:hover {
+            border-color: #fff;
+        }
+ 
+        .hltv-rank {
+            font-size: 48px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+        }
+ 
+        .hltv-year {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+ 
+        .hltv-link {
+            font-size: 13px;
+            color: #aaa;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+ 
+        .hltv-link:hover {
+            color: #fff;
+        }
+ 
+       
+        .awards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+ 
+        .award-block {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 28px;
+        }
+ 
+        .award-escrita {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 3px;
+        }
+ 
+        .award-count {
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            margin-top: 4px;
+        }
+ 
+        .award-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+ 
+        .award-list li {
+            font-size: 14px;
+            color: #ccc;
+            padding: 8px 12px;
+            border-left: 2px solid #444;
+            background: #0a0a0a;
+       }
