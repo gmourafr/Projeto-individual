@@ -6,7 +6,22 @@
 comandos para mysql server
 */
 
-CREATE DATABASE aquatech;
+
+
+CREATE DATABASE projetofallen;
+
+USE projetofallen;
+
+CREATE TABLE usuarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50),
+    email VARCHAR(50),
+    senha VARCHAR(50)
+);
+
+INSERT INTO usuarios (nome, email, senha) VALUES ('guilherme', 'guilherme@sptech.com', '12345');
+
+/* CREATE DATABASE aquatech;
 
 USE aquatech;
 
@@ -59,4 +74,4 @@ create table medida (
 insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
 insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
 insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2); */
