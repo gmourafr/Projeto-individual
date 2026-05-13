@@ -1,6 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
 
-
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
@@ -13,6 +12,7 @@ function autenticar(req, res) {
         usuarioModel.autenticar(email, senha)
             .then(function (resultado) {
                 if (resultado.length == 1) {
+                    usuarioModel.registrarLogin(resultado[0].id);
                     res.json({
                         id: resultado[0].id,
                         email: resultado[0].email,
@@ -53,7 +53,31 @@ function cadastrar(req, res) {
     }
 }
 
+function loginsPorDia(req, res) {
+    console.log("ACESSEI O USUARIO CONTROLLER - function loginsPorDia()");
+    usuarioModel.loginsPorDia()
+        .then(function (resultado) {
+            res.json(resultado);
+        }).catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function vitoriasFallen(req, res) {
+    console.log("ACESSEI O USUARIO CONTROLLER - function vitoriasFallen()");
+    usuarioModel.vitoriasFallen()
+        .then(function (resultado) {
+            res.json(resultado);
+        }).catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    loginsPorDia,
+    vitoriasFallen
 }

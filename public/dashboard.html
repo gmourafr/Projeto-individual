@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - FalleN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./css/dashboards.css" />
+    
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">FURIA</div>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="historia.html">HISTÓRIA</a>
+            <a href="calculadora.html">CALCULADORA</a>
+            <a href="conquistas.html">CONQUISTAS</a>
+            <a href="cadastro.html">CADASTRO</a>
+            <a href="dashboard.html" >DASHBOARD</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        
+        <h2>Logins</h2>
+        <div class="cards">
+            <div class="card">
+                <p>Hoje</p>
+                <span id="logins-hoje">—</span>
+            </div>
+            <div class="card">
+                <p>Ontem</p>
+                <span id="logins-ontem">—</span>
+            </div>
+            <div class="card">
+                <p>Semana</p>
+                <span id="logins-semana">—</span>
+            </div>
+        </div>
+
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Logins</th>
+                </tr>
+            </thead>
+            <tbody id="login-tbody">
+                <tr><td colspan="2">Carregando...</td></tr>
+            </tbody>
+        </table>
+
+
+        <div class="grafico-box">
+            <h2>Vitórias do FalleN por Time</h2>
+            <canvas id="grafico-vitorias"></canvas>
+        </div>
+
+    </div>
+
+    <script>
+        
+        fetch('/usuarios/logins-por-dia')
+            .then(function(response) {
+                if (response.ok) {
+                    response.json().then(function(dados) {
+                        
+                        var tbody = document.getElementById('login-tbody');
+                        tbody.innerHTML = '';
+
+                        dados.forEach(function(item) {
+                            tbody.innerHTML += `
+                                <tr>
+                                    <td>${item.data}</td>
+                                    <td class="destaque">${item.quantidade}</td>
+                                </tr>
+                            `;
+                        });
+
+                        document.getElementById('logins-hoje').textContent   = dados[0]?.quantidade ?? '—';
+                        document.getElementById('logins-ontem').textContent  = dados[1]?.quantidade ?? '—';
+                        document.getElementById('logins-semana').textContent = dados.reduce(function(s, d) { return s + d.quantidade; }, 0);
+                    });
+                } else {
+                    console.error('Erro ao buscar logins');
+                }
+            })
+            .catch(function(error) {
+                console.error('Erro: ' + error.message);
+            });
+
+
+        
+        fetch('/usuarios/vitorias-fallen')
+            .then(function(response) {
+                if (response.ok) {
+                    response.json().then(function(dados) {
+                        
+                        plotarGrafico(dados);
+                    });
+                } else {
+                    console.error('Erro ao buscar vitórias');
+                }
+            })
+            .catch(function(error) {
+                console.error('Erro: ' + error.message);
+            });
+
+        function plotarGrafico(dados) {
+            var labels = dados.map(function(d) { return d.time; });
+            var valores = dados.map(function(d) { return d.vitorias; });
+
+            new Chart(document.getElementById('grafico-vitorias'), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Vitórias',
+                        data: valores,
+                        backgroundColor: '#fff',
+                        borderWidth: 0,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#000',
+                            borderColor: '#333',
+                            borderWidth: 1,
+                            titleColor: '#fff',
+                            bodyColor: '#aaa',
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: '#1a1a1a' },
+                            ticks: { color: '#555', font: { family: "'Rajdhani', sans-serif", size: 13, weight: '700' } }
+                        },
+                        y: {
+                            grid: { color: '#1a1a1a' },
+                            ticks: { color: '#555', font: { family: "'Rajdhani', sans-serif", size: 13 } }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

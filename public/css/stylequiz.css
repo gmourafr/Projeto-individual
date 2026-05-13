@@ -1,3 +1,6 @@
+
+
+
 :root {
     --primary-brand-color: #474343;
     --secondary-brand-color: #0762C8;
@@ -15,15 +18,18 @@
     --new-white: #E8E8E8;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 body {
     color: var(--new-black);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
     background-color: #111;
 }
 
@@ -39,7 +45,7 @@ header {
 
 .logo {
     color: #ffffff;
-    font-family: 'Orbitron', sans-serif;
+    
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 4px;
@@ -53,7 +59,7 @@ nav {
 nav a {
     color: #ffffff;
     text-decoration: none;
-    font-family: 'Orbitron', sans-serif;
+
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -82,7 +88,7 @@ nav a:hover {
     border: none;
     border-radius: 8px;
     padding: 14px 40px;
-    font-family: 'Orbitron', sans-serif;
+    
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 3px;
@@ -90,7 +96,6 @@ nav a:hover {
 }
 
 button {
-    font-family: monospace;
     font-weight: bold;
 }
 
