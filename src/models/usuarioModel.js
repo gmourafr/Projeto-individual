@@ -9,14 +9,6 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSql);
 }
 
-function registrarLogin(fk_usuario) {
-    console.log("ACESSEI O USUARIO MODEL - function registrarLogin():", fk_usuario);
-    var instrucaoSql = `
-        INSERT INTO logins (fk_usuario) VALUES ('${fk_usuario}');
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
 
 function cadastrar(nome, email, senha) {
     console.log("ACESSEI O USUARIO MODEL - function cadastrar():", nome, email, senha);
@@ -32,6 +24,5 @@ function cadastrar(nome, email, senha) {
 
 module.exports = {
     autenticar,
-    registrarLogin,
     cadastrar
 };
