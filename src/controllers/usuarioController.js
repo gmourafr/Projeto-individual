@@ -12,7 +12,7 @@ function autenticar(req, res) {
         usuarioModel.autenticar(email, senha)
             .then(function (resultado) {
                 if (resultado.length == 1) {
-                    usuarioModel.registrarLogin(resultado[0].id);
+                
                     res.json({
                         id: resultado[0].id,
                         email: resultado[0].email,
@@ -52,7 +52,6 @@ function cadastrar(req, res) {
             });
     }
 }
-
 
 module.exports = {
     autenticar,
