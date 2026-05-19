@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./css/dashboards.css" />
-    
 </head>
 
 <body>
@@ -20,112 +19,146 @@
             <a href="historia.html">HISTÓRIA</a>
             <a href="calculadora.html">CALCULADORA</a>
             <a href="conquistas.html">CONQUISTAS</a>
-            <a href="cadastro.html">CADASTRO</a>
-            <a href="dashboard.html" >DASHBOARD</a>
+            <a href="quiz.html">QUIZ</a>
         </nav>
     </header>
 
     <div class="container">
 
+        <h2>Quiz — Resultados</h2>
+
         
-        <h2>Logins</h2>
         <div class="cards">
             <div class="card">
-                <p>Hoje</p>
-                <span id="logins-hoje">—</span>
+                <p>Melhor Resultado</p>
+                <span id="kpi-melhor">—</span>
             </div>
             <div class="card">
-                <p>Ontem</p>
-                <span id="logins-ontem">—</span>
+                <p>Total de Tentativas</p>
+                <span id="kpi-tentativas">—</span>
             </div>
             <div class="card">
-                <p>Semana</p>
-                <span id="logins-semana">—</span>
+                <p>Taxa de Acerto</p>
+                <span id="kpi-pct">—</span>
             </div>
         </div>
 
         
-        <table>
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Logins</th>
-                </tr>
-            </thead>
-            <tbody id="login-tbody">
-                <tr><td colspan="2">Carregando...</td></tr>
-            </tbody>
-        </table>
-
-
         <div class="grafico-box">
-            <h2>Vitórias do FalleN por Time</h2>
-            <canvas id="grafico-vitorias"></canvas>
+            <h2>Acertos vs Erros (geral)</h2>
+            <canvas id="grafico-pizza"></canvas>
+        </div>
+
+        
+        <div class="grafico-box">
+            <h2>Acertos por Tentativa</h2>
+            <canvas id="grafico-tentativas"></canvas>
         </div>
 
     </div>
 
     <script>
-        
-        fetch('/usuarios/logins-por-dia')
-            .then(function(response) {
+
+       
+        var USUARIO_ID = sessionStorage.ID_USUARIO;
+
+       
+        fetch('/quiz/kpis/' + USUARIO_ID)
+            .then(function (response) {
                 if (response.ok) {
-                    response.json().then(function(dados) {
-                        
-                        var tbody = document.getElementById('login-tbody');
-                        tbody.innerHTML = '';
+                    response.json().then(function (dados) {
+                        document.getElementById('kpi-melhor').textContent =
+                            dados.melhor_acertos + '/' + dados.total_perguntas;
+                        document.getElementById('kpi-tentativas').textContent =
+                            dados.total_tentativas;
+                        document.getElementById('kpi-pct').textContent =
+                            dados.pct_acerto + '%';
 
-                        dados.forEach(function(item) {
-                            tbody.innerHTML += `
-                                <tr>
-                                    <td>${item.data}</td>
-                                    <td class="destaque">${item.quantidade}</td>
-                                </tr>
-                            `;
-                        });
-
-                        document.getElementById('logins-hoje').textContent   = dados[0]?.quantidade ?? '—';
-                        document.getElementById('logins-ontem').textContent  = dados[1]?.quantidade ?? '—';
-                        document.getElementById('logins-semana').textContent = dados.reduce(function(s, d) { return s + d.quantidade; }, 0);
+                        plotarPizza(dados.soma_acertos, dados.soma_erros);
                     });
                 } else {
-                    console.error('Erro ao buscar logins');
+                    console.error('Erro ao buscar KPIs');
                 }
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 console.error('Erro: ' + error.message);
             });
 
-
-        
-        fetch('/usuarios/vitorias-fallen')
-            .then(function(response) {
+    
+        fetch('/quiz/tentativas/' + USUARIO_ID)
+            .then(function (response) {
                 if (response.ok) {
-                    response.json().then(function(dados) {
-                        
-                        plotarGrafico(dados);
+                    response.json().then(function (dados) {
+                        plotarTentativas(dados);
                     });
                 } else {
-                    console.error('Erro ao buscar vitórias');
+                    console.error('Erro ao buscar tentativas');
                 }
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 console.error('Erro: ' + error.message);
             });
 
-        function plotarGrafico(dados) {
-            var labels = dados.map(function(d) { return d.time; });
-            var valores = dados.map(function(d) { return d.vitorias; });
+       
+        function plotarPizza(acertos, erros) {
+            new Chart(document.getElementById('grafico-pizza'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Acertos', 'Erros'],
+                    datasets: [{
+                        data: [acertos, erros],
+                        backgroundColor: ['#ffffff', '#333333'],
+                        borderColor: ['#ffffff', '#555555'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#fff',
+                                font: { family: "'Rajdhani', sans-serif", size: 14, weight: '700' }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#000',
+                            borderColor: '#333',
+                            borderWidth: 1,
+                            titleColor: '#fff',
+                            bodyColor: '#aaa',
+                            callbacks: {
+                                label: function (ctx) {
+                                    var total = acertos + erros;
+                                    var pct = ((ctx.raw / total) * 100).toFixed(1);
+                                    return ctx.label + ': ' + ctx.raw + ' (' + pct + '%)';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
 
-            new Chart(document.getElementById('grafico-vitorias'), {
-                type: 'bar',
+    
+        function plotarTentativas(dados) {
+            var labels = dados.map(function (d, i) { return 'Tentativa ' + (i + 1) + ' (' + d.data + ')'; });
+            var valores = dados.map(function (d) { return d.total_acertos; });
+            var maxPerguntas = dados.length > 0 ? dados[0].total_perguntas : 5;
+
+            new Chart(document.getElementById('grafico-tentativas'), {
+                type: 'line',
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Vitórias',
+                        label: 'Acertos',
                         data: valores,
-                        backgroundColor: '#fff',
-                        borderWidth: 0,
+                        borderColor: '#ffffff',
+                        backgroundColor: 'rgba(255,255,255,0.05)',
+                        pointBackgroundColor: '#ffffff',
+                        pointRadius: 5,
+                        tension: 0.3,
+                        fill: true
                     }]
                 },
                 options: {
@@ -138,21 +171,33 @@
                             borderWidth: 1,
                             titleColor: '#fff',
                             bodyColor: '#aaa',
+                            callbacks: {
+                                label: function (ctx) {
+                                    return 'Acertos: ' + ctx.raw + '/' + maxPerguntas;
+                                }
+                            }
                         }
                     },
                     scales: {
                         x: {
                             grid: { color: '#1a1a1a' },
-                            ticks: { color: '#555', font: { family: "'Rajdhani', sans-serif", size: 13, weight: '700' } }
+                            ticks: { color: '#555', font: { family: "'Rajdhani', sans-serif", size: 12, weight: '700' } }
                         },
                         y: {
+                            min: 0,
+                            max: maxPerguntas,
                             grid: { color: '#1a1a1a' },
-                            ticks: { color: '#555', font: { family: "'Rajdhani', sans-serif", size: 13 } }
+                            ticks: {
+                                color: '#555',
+                                stepSize: 1,
+                                font: { family: "'Rajdhani', sans-serif", size: 13 }
+                            }
                         }
                     }
                 }
             });
         }
+
     </script>
 
 </body>

@@ -27,32 +27,11 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucaoSql);
 }
 
-function loginsPorDia() {
-    console.log("ACESSEI O USUARIO MODEL - function loginsPorDia()");
-    var instrucaoSql = `
-        SELECT DATE_FORMAT(data_login, '%d/%m/%Y') AS data, COUNT(*) AS quantidade
-        FROM logins
-        GROUP BY DATE(data_login)
-        ORDER BY DATE(data_login) DESC
-        LIMIT 7;
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
 
-function vitoriasFallen() {
-    console.log("ACESSEI O USUARIO MODEL - function vitoriasFallen()");
-    var instrucaoSql = `
-        SELECT nome AS time, vitorias FROM times ORDER BY id ASC;
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
+
 
 module.exports = {
     autenticar,
     registrarLogin,
-    cadastrar,
-    loginsPorDia,
-    vitoriasFallen
+    cadastrar
 };

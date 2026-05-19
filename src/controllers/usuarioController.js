@@ -53,31 +53,8 @@ function cadastrar(req, res) {
     }
 }
 
-function loginsPorDia(req, res) {
-    console.log("ACESSEI O USUARIO CONTROLLER - function loginsPorDia()");
-    usuarioModel.loginsPorDia()
-        .then(function (resultado) {
-            res.json(resultado);
-        }).catch(function (erro) {
-            console.log(erro);
-            res.status(500).json(erro.sqlMessage);
-        });
-}
-
-function vitoriasFallen(req, res) {
-    console.log("ACESSEI O USUARIO CONTROLLER - function vitoriasFallen()");
-    usuarioModel.vitoriasFallen()
-        .then(function (resultado) {
-            res.json(resultado);
-        }).catch(function (erro) {
-            console.log(erro);
-            res.status(500).json(erro.sqlMessage);
-        });
-}
 
 module.exports = {
     autenticar,
-    cadastrar,
-    loginsPorDia,
-    vitoriasFallen
+    cadastrar
 }

@@ -10,15 +10,13 @@
 </head>
 <body>
     <header>
-      
-        <div class="logo">FALLEN - PROFESSOR.</div>
+        <div class="logo">FALLEN </div>
         <nav>
             <a href="index.html">HOME</a>
             <a href="historia.html">HISTÓRIA</a>
             <a href="calculadora.html">CALCULADORA</a>
             <a href="conquistas.html">CONQUISTAS</a>
             <a href="dashboard.html">DASHBOARD</a>
-            
         </nav>
     </header>
 
@@ -76,7 +74,6 @@
             <div id="botoes" class="flex-colunar padding-8">
                 <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
                 <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                
                 <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
             </div>
 
@@ -86,45 +83,92 @@
 
 </html>
 <script>
-    const listaDeQuestoes = [
 
-        {
-            pergunta: "Qual foi a principal função do FalleN em toda sua carreira?",
-            alternativaA: "AWPER",
-            alternativaB: "ENTRY FRAGGER",
-            alternativaC: "SUPORTE",
-            alternativaD: "RIFFLER",
-            alternativaCorreta: "alternativaA"
-        },
+   const listaDeQuestoes = [
+    {
+        id: 1,
+        pergunta: "Qual foi a principal função do FalleN em toda sua carreira?",
+        alternativaA: "AWPER",
+        alternativaB: "ENTRY FRAGGER",
+        alternativaC: "SUPORTE",
+        alternativaD: "RIFFLER",
+        alternativaCorreta: "alternativaA"
+    },
+    {
+        id: 2,
+        pergunta: "Quantos Majors o FalleN ganhou?",
+        alternativaA: "1 Major",
+        alternativaB: "5 Majors",
+        alternativaC: "3 Majors",
+        alternativaD: "2 Majors",
+        alternativaCorreta: "alternativaD"
+    },
+    {
+        id: 3,
+        pergunta: "Em qual time FalleN mais ganhou campeonatos?",
+        alternativaA: "MIBR",
+        alternativaB: "Luminosity Gaming",
+        alternativaC: "FURIA",
+        alternativaD: "SK Gaming",
+        alternativaCorreta: "alternativaB"
+    },
+    {
+        id: 4,
+        pergunta: "Qual o nome real do FalleN?",
+        alternativaA: "Gabriel Silva",
+        alternativaB: "Fernando Tenório",
+        alternativaC: "Marcelo Toledo",
+        alternativaD: "Gabriel Toledo",
+        alternativaCorreta: "alternativaD"
+    },
+    {
+        id: 5,
+        pergunta: "Em qual país o FalleN nasceu?",
+        alternativaA: "Argentina",
+        alternativaB: "Portugal",
+        alternativaC: "Brasil",
+        alternativaD: "EUA",
+        alternativaCorreta: "alternativaC"
+    },
+    {
+        id: 6,
+        pergunta: "Qual apelido o FalleN recebeu por ser um grande líder e mentor?",
+        alternativaA: "The King",
+        alternativaB: "O Professor",
+        alternativaC: "The Legend",
+        alternativaD: "O Mestre AWP",
+        alternativaCorreta: "alternativaB"
+    },
+    {
+        id: 7,
+        pergunta: "Em qual ano o FalleN foi campeão do Major de Colônia (ESL One Cologne)?",
+        alternativaA: "2014",
+        alternativaB: "2015",
+        alternativaC: "2016",
+        alternativaD: "2017",
+        alternativaCorreta: "alternativaC"
+    },
+    {
+        id: 8,
+        pergunta: "Qual time FalleN assinou em 2023 para voltar ao cenário competitivo?",
+        alternativaA: "NAVI",
+        alternativaB: "Team Liquid",
+        alternativaC: "FURIA",
+        alternativaD: "Imperial",
+        alternativaCorreta: "alternativaC"
+    }
+]
 
-        {
-            pergunta: "Quantos Majors o FalleN ganhou?",
-            alternativaA: "1 Major",
-            alternativaB: "5 Majors",
-            alternativaC: "3 Majors",
-            alternativaD: "2 Majors",
-            alternativaCorreta: "alternativaD"
-        },
-
-        {
-            pergunta: "Em qual FalleN mais ganhou campeonato?",
-            alternativaA: "MIBR",
-            alternativaB: "Luminosity Gaming",
-            alternativaC: "FURIA",
-            alternativaD: "SK Gaming",
-            alternativaCorreta: "alternativaB"
-        }
-
-    ]
-
-    // variáveis globais    
+    // variáveis globais
     let numeroDaQuestaoAtual = 0
     let pontuacaoFinal = 0
     let tentativaIncorreta = 0
     let certas = 0
     let erradas = 0
     let quantidadeDeQuestoes = listaDeQuestoes.length
-    // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
+
+    // guarda respostas para salvar no banco
+    let respostasParaSalvar = []
 
     function onloadEsconder() {
         document.getElementById('pontuacao').style.display = "none"
@@ -135,14 +179,12 @@
         document.getElementById('pontuacao').style.display = "flex"
         document.getElementById('jogo').style.display = "flex"
         document.getElementById('btnIniciarQuiz').style.display = "none"
-
         document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
 
         preencherHTMLcomQuestaoAtual(0)
 
         btnSubmeter.disabled = false
         btnProx.disabled = true
-        // btnConcluir.disabled = true
         btnTentarNovamente.disabled = true
     }
 
@@ -150,9 +192,7 @@
         habilitarAlternativas(true)
         const questaoAtual = listaDeQuestoes[index]
         numeroDaQuestaoAtual = index
-        console.log("questaoAtual")
-        console.log(questaoAtual)
-        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
+        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1
         document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
         document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
         document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
@@ -161,14 +201,11 @@
     }
 
     function submeter() {
-        const options = document.getElementsByName("option"); // recupera alternativas no html
+        const options = document.getElementsByName("option");
 
         let hasChecked = false
         for (let i = 0; i < options.length; i++) {
-            if (options[i].checked) {
-                hasChecked = true
-                break
-            }
+            if (options[i].checked) { hasChecked = true; break; }
         }
 
         if (!hasChecked) {
@@ -176,27 +213,22 @@
         } else {
             btnSubmeter.disabled = true
             btnProx.disabled = false
-
             habilitarAlternativas(false)
-
             checarResposta()
         }
     }
 
     function habilitarAlternativas(trueOrFalse) {
         let opcaoEscolhida = trueOrFalse ? false : true
-
         primeiraOpcao.disabled = opcaoEscolhida
         segundaOpcao.disabled = opcaoEscolhida
         terceiraOpcao.disabled = opcaoEscolhida
         quartaOpcao.disabled = opcaoEscolhida
-
     }
 
     function avancar() {
         btnProx.disabled = true
         btnSubmeter.disabled = false
-
         desmarcarRadioButtons()
 
         if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
@@ -211,26 +243,30 @@
     }
 
     function tentarNovamente() {
-        // atualiza a página
         window.location.reload()
     }
 
     function checarResposta() {
-        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 
-        const respostaQuestaoAtual = questaoAtual.alternativaCorreta // qual é a resposta correta da questão atual
+        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual]
+        const respostaQuestaoAtual = questaoAtual.alternativaCorreta
+        const options = document.getElementsByName("option");
 
-        const options = document.getElementsByName("option"); // recupera alternativas no html
+        // mapa de valor da alternativa -> letra para salvar no banco
+        const mapaLetra = {
+            alternativaA: 'a',
+            alternativaB: 'b',
+            alternativaC: 'c',
+            alternativaD: 'd'
+        }
 
-        let alternativaCorreta = null // variável para armazenar a alternativa correta
+        let alternativaCorreta = null
 
         options.forEach((option) => {
             if (option.value === respostaQuestaoAtual) {
-                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
                 alternativaCorreta = option.labels[0].id
             }
         })
 
-        // verifica se resposta assinalada é correta
         options.forEach((option) => {
             if (option.checked === true && option.value === respostaQuestaoAtual) {
                 document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
@@ -238,15 +274,29 @@
                 certas++
                 document.getElementById("spanCertas").innerHTML = certas
                 numeroDaQuestaoAtual++
+
+                // salva resposta correta
+                respostasParaSalvar.push({
+                    fk_pergunta: questaoAtual.id,
+                    resposta_dada: mapaLetra[option.value],
+                    acertou: true
+                })
+
             } else if (option.checked && option.value !== respostaQuestaoAtual) {
                 const wrongLabelId = option.labels[0].id
-
                 document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
                 document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
                 tentativaIncorreta++
                 erradas++
                 document.getElementById("spanErradas").innerHTML = erradas
                 numeroDaQuestaoAtual++
+
+                // salva resposta errada
+                respostasParaSalvar.push({
+                    fk_pergunta: questaoAtual.id,
+                    resposta_dada: mapaLetra[option.value],
+                    acertou: false
+                })
             }
         })
     }
@@ -274,31 +324,49 @@
         if (porcentagemFinalDeAcertos <= 0.3) {
             textoParaMensagemFinal = "Você realmente conhece o Professor?..."
             classComCoresParaMensagemFinal = "text-danger-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
+        } else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
             textoParaMensagemFinal = "Melhor ler um pouco mais as páginas Conquistas e História antes de responder..."
             classComCoresParaMensagemFinal = "text-warning-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos >= 0.9) {
+        } else if (porcentagemFinalDeAcertos >= 0.9) {
             textoParaMensagemFinal = "Você realmente conhece o PROFESSOR! #GOFURIA"
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
 
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
-
+        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
 
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
+        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
         document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
-
-        document.getElementById('jogo').classList.add("text-new-gray") 
+        document.getElementById('jogo').classList.add("text-new-gray")
 
         btnProx.disabled = true
         btnSubmeter.disabled = true
-        // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
 
+    
+        var usuarioId = sessionStorage.ID_USUARIO;
+
+     
+
+        fetch('/quiz/salvar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                fk_usuario: usuarioId,
+                total_acertos: pontuacaoFinal,
+                total_perguntas: quantidadeDeQuestoes,
+                respostas: respostasParaSalvar
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                console.log("Tentativa salva no banco!");
+            } else {
+                console.error("Erro ao salvar tentativa.");
+            }
+        }).catch(function (erro) {
+            console.error("Erro na requisição:", erro);
+        });
     }
-    </script>
+</script>
 </body>
 </html>

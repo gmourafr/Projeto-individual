@@ -11,12 +11,4 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
-router.get("/logins-por-dia", function (req, res) {
-    usuarioController.loginsPorDia(req, res);
-});
-
-router.get("/vitorias-fallen", function (req, res) {
-    usuarioController.vitoriasFallen(req, res);
-});
-
 module.exports = router;
