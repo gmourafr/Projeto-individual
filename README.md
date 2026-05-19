@@ -14,7 +14,7 @@ Um projeto individual desenvolvido com o objetivo de apresentar a história de G
 
 ## 📋 Sobre o Projeto
 
-O **Projeto FalleN** é uma aplicação web fullstack que reúne informações, curiosidades e funcionalidades interativas sobre Gabriel "FalleN" Toledo. O usuário pode se cadastrar, fazer login, responder um quiz sobre a carreira do jogador e acompanhar seu desempenho em uma dashboard com KPIs e gráficos.
+O **Projeto FalleN** é feito por curiosidades e funcionalidades interativas sobre Gabriel "FalleN" Toledo. O usuário pode se cadastrar, fazer login, responder um quiz sobre a carreira do jogador e acompanhar seu desempenho em uma dashboard com KPIs e gráficos.
 
 ---
 
