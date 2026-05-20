@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cadastro - FalleN</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/cadastro.css" />
     <link rel="icon" type="image/png" href="./assets/imgs/badfallen.png">
 </head>
 <script src="./js/sessao.js"></script>
@@ -23,36 +23,36 @@
         </nav>
     </header>
 
-    <div class="pagina-cadastro">
-        <div class="card-cadastro">
+    <div class="paginadecadastro">
+        <div class="caixadecadastro">
             <h2>criar conta</h2>
 
-            <div class="campo">
+            <div class="campinho">
                 <label>nome</label>
                 <input type="text" id="nome_input" placeholder="seu nome">
             </div>
-            <div class="campo">
+            <div class="campinho">
                 <label>e-mail</label>
                 <input type="text" id="email_input" placeholder="seuemail@email.com">
             </div>
-            <div class="campo">
+            <div class="campinho">
                 <label>senha</label>
                 <input type="password" id="senha_input" placeholder="******">
             </div>
-            <div class="campo">
+            <div class="campinho">
                 <label>confirmar senha</label>
                 <input type="password" id="confirmacao_senha_input" placeholder="******">
             </div>
 
             <button onclick="cadastrar()">cadastrar</button>
 
-            <div class="card_erro" id="cardErro">
+            <div class="caixadeerro" id="cardErro">
                 <span id="mensagem_erro"></span>
             </div>
 
             <div id="div_msg"></div>
 
-            <p class="link-login">já tem conta? <a href="login.html">entrar</a></p>
+            <p class="linkparaoutrapagina">já tem conta? <a href="login.html">entrar</a></p>
         </div>
     </div>
 
@@ -63,7 +63,6 @@
             var senhaVar = senha_input.value;
             var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
-            
             var campos = [
                 { valor: nomeVar, nome: "nome" },
                 { valor: emailVar, nome: "e-mail" },
@@ -71,7 +70,6 @@
                 { valor: confirmacaoSenhaVar, nome: "confirmação de senha" }
             ];
 
-            
             for (var i = 0; i < campos.length; i++) {
                 if (campos[i].valor == "") {
                     cardErro.style.display = "block";
@@ -86,7 +84,7 @@
                 setTimeout(sumirMensagem, 5000);
                 return false;
             }
-            // Enviando os dados para o servidor
+
             fetch("/usuarios/cadastrar", {
                 method: "POST",
                 headers: {

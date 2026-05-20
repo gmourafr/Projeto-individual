@@ -1,0 +1,102 @@
+/* a tela toda com a imagem de fundo */
+.paginadecadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 95vh;
+    background-image: url('../assets/imgs/fallen-na-furia-csgo.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* o cartaozinho branco do meio */
+.caixadecadastro {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+}
+
+.caixadecadastro h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* os campos de formulario */
+.campinho {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.campinho label {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.campinho input {
+    padding: 10px;
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+/* o botao de enviar */
+.caixadecadastro button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.caixadecadastro button:hover {
+    background: #ddd;
+}
+
+/* o link la embaixo */
+.linkparaoutrapagina {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+.linkparaoutrapagina a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* a caixinha de erro */
+.caixadeerro {
+    display: none;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+}

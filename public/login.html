@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login - FalleN</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/cadastro.css" />
+    <link rel="icon" type="image/png" href="./assets/imgs/badfallen.png">
 </head>
 <script src="./js/sessao.js"></script>
 
 <body>
 
     <header>
-        <div class="logo">FURIA</div>
+        <div class="logo">FALLEN</div>
         <nav>
             <a href="index.html">HOME</a>
             <a href="historia.html">HISTÓRIA</a>
@@ -22,15 +23,16 @@
             <a href="cadastro.html">CADASTRO</a>
         </nav>
     </header>
-    <div class="pagina-cadastro">
-        <div class="card-cadastro">
+
+    <div class="paginadecadastro">
+        <div class="caixadecadastro">
             <h2>Bem-vindo de volta FURIOSO!</h2>
 
-            <div class="campo">
+            <div class="campinho">
                 <label>e-mail</label>
                 <input type="text" id="email_input" placeholder="seuemail@email.com">
             </div>
-            <div class="campo">
+            <div class="campinho">
                 <label>senha</label>
                 <input type="password" id="senha_input" placeholder="******">
             </div>
@@ -39,62 +41,61 @@
 
             <div id="div_msg"></div>
 
-            <div class="card_erro" id="cardErro">
+            <div class="caixadeerro" id="cardErro">
                 <span id="mensagem_erro"></span>
             </div>
 
-            <p class="link-login">não tem conta? <a href="cadastro.html">cadastrar</a></p>
+            <p class="linkparaoutrapagina">não tem conta? <a href="cadastro.html">cadastrar</a></p>
         </div>
     </div>
 
-
-
     <script>
-function entrar() {
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
+        function entrar() {
+            var emailVar = email_input.value;
+            var senhaVar = senha_input.value;
 
-    if (emailVar == "" || senhaVar == "") {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "Preencha todos os campos!";
-        setTimeout(sumirMensagem, 5000);
-        return false;
-    }
-
-    fetch("/usuarios/autenticar", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            emailServer: emailVar,
-            senhaServer: senhaVar
-        })
-    }).then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(json => {
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.id;
-
-                window.location = "./quiz.html";
-            });
-        } else {
-            resposta.text().then(texto => {
+            if (emailVar == "" || senhaVar == "") {
                 cardErro.style.display = "block";
-                mensagem_erro.innerHTML = texto;
+                mensagem_erro.innerHTML = "Preencha todos os campos!";
                 setTimeout(sumirMensagem, 5000);
+                return false;
+            }
+
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.id;
+
+                        window.location = "./quiz.html";
+                    });
+                } else {
+                    resposta.text().then(texto => {
+                        cardErro.style.display = "block";
+                        mensagem_erro.innerHTML = texto;
+                        setTimeout(sumirMensagem, 5000);
+                    });
+                }
+            }).catch(function (erro) {
+                console.log(erro);
             });
+
+            return false;
         }
-    }).catch(function (erro) {
-        console.log(erro);
-    });
 
-    return false;
-}
-
-function sumirMensagem() {
-    cardErro.style.display = "none";
-}
+        function sumirMensagem() {
+            cardErro.style.display = "none";
+        }
     </script>
+
 </body>
 
 </html>
