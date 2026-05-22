@@ -1,20 +1,19 @@
-/* hero do topo */
+
 .conquistas-hero {
     text-align: center;
     padding: 80px 20px 50px;
-    border-bottom: 1px solid #222;
 }
 
 .conquistas-hero h1 {
     font-size: 52px;
     font-weight: 700;
-    letter-spacing: 8px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     color: #fff;
 }
 
 .conquistas-hero p {
-    color: #aaa;
+    color: #ffffff;
     font-size: 18px;
     margin-top: 10px;
     letter-spacing: 2px;
@@ -38,9 +37,9 @@
 
 .hero-stat p {
     font-size: 13px;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    color: #555;
+    color: #ffffff;
     margin-top: 4px;
 }
 
@@ -49,22 +48,14 @@
     max-width: 900px;
     margin: 0 auto;
     padding: 60px 24px;
-    border-bottom: 1px solid #1a1a1a;
-}
-
-.conq-section:last-child {
-    border-bottom: none;
 }
 
 .conq-section-title {
-    font-size: 13px;
-    letter-spacing: 5px;
+    font-size: 23px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: #aaa;
+    color: #ffffff;
     margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
 }
 
 
@@ -76,21 +67,18 @@
 
 .major-card {
     background: #111;
-    border: 1px solid #333;
     border-radius: 8px;
     overflow: hidden;
+    transition: transform 0.2s;
 }
 
-.major-card:hover {
-    border-color: #fff;
-}
 
 .major-card img {
     width: 100%;
     aspect-ratio: 16/9;
     object-fit: cover;
     display: block;
-    filter: brightness(0.75);
+    filter: brightness(1);
     transition: filter 0.3s, transform 0.3s;
 }
 
@@ -107,7 +95,7 @@
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #aaa;
+    color: #ffffff;
     margin-bottom: 6px;
 }
 
@@ -119,7 +107,7 @@
 
 .major-team {
     font-size: 15px;
-    color: #aaa;
+    color: #ffffff;
     margin-top: 4px;
 }
 
@@ -134,7 +122,6 @@
     gap: 12px;
     margin-bottom: 16px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #222;
 }
 
 .team-name {
@@ -147,7 +134,7 @@
 
 .team-years {
     font-size: 13px;
-    color: #555;
+    color: #ffffff;
     letter-spacing: 2px;
 }
 
@@ -163,13 +150,12 @@
     gap: 14px;
     padding: 14px 16px;
     background: #111;
-    border: 1px solid #333;
     border-radius: 8px;
-    transition: border-color 0.2s;
+    transition: background 0.2s;
 }
 
 .trophy-item:hover {
-    border-color: #fff;
+    background: #1a1a1a;
 }
 
 .trophy-img {
@@ -181,14 +167,14 @@
 
 .trophy-title {
     font-weight: 700;
-    font-size: 15px;
+    font-size: 18px;
     color: #fff;
 }
 
 .major-tag {
     display: inline-block;
-    font-size: 10px;
-    letter-spacing: 2px;
+    font-size: 15px;
+    letter-spacing: 1px;
     color: #000;
     background: #fff;
     padding: 1px 6px;
@@ -207,17 +193,16 @@
 
 .hltv-card {
     background: #111;
-    border: 1px solid #333;
     border-radius: 8px;
     padding: 28px;
     display: flex;
     align-items: center;
     gap: 24px;
-    transition: border-color 0.2s;
+    transition: background 0.2s;
 }
 
 .hltv-card:hover {
-    border-color: #fff;
+    background: #1a1a1a;
 }
 
 .hltv-rank {
@@ -236,7 +221,7 @@
 
 .hltv-link {
     font-size: 13px;
-    color: #aaa;
+    color: #ffffff;
     text-decoration: none;
     letter-spacing: 1px;
 }
@@ -254,7 +239,6 @@
 
 .award-block {
     background: #111;
-    border: 1px solid #333;
     border-radius: 8px;
     padding: 28px;
 }
@@ -269,7 +253,7 @@
 .award-count {
     font-size: 13px;
     letter-spacing: 3px;
-    color: #555;
+    color: #ffffff;
     text-transform: uppercase;
     margin-bottom: 20px;
     margin-top: 4px;
@@ -284,8 +268,8 @@
 
 .award-list li {
     font-size: 14px;
-    color: #ccc;
+    color: #ffffff;
     padding: 8px 12px;
-    border-left: 2px solid #444;
     background: #0a0a0a;
+    border-radius: 4px;
 }

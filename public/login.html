@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +10,9 @@
     <link rel="icon" type="image/png" href="./assets/imgs/badfallen.png">
 </head>
 <script src="./js/sessao.js"></script>
-
+ 
 <body>
-
+ 
     <header>
         <div class="logo">FALLEN</div>
         <nav>
@@ -23,44 +23,44 @@
             <a href="cadastro.html">CADASTRO</a>
         </nav>
     </header>
-
-    <div class="paginadecadastro">
-        <div class="caixadecadastro">
+ 
+    <div class="cadastro-hero">
+        <div class="cadastro-card">
             <h2>Bem-vindo de volta FURIOSO!</h2>
-
-            <div class="campinho">
+ 
+            <div class="form-field">
                 <label>e-mail</label>
                 <input type="text" id="email_input" placeholder="seuemail@email.com">
             </div>
-            <div class="campinho">
+            <div class="form-field">
                 <label>senha</label>
                 <input type="password" id="senha_input" placeholder="******">
             </div>
-
+ 
             <button onclick="entrar()">entrar</button>
-
+ 
             <div id="div_msg"></div>
-
-            <div class="caixadeerro" id="cardErro">
+ 
+            <div class="error-card" id="cardErro">
                 <span id="mensagem_erro"></span>
             </div>
-
-            <p class="linkparaoutrapagina">não tem conta? <a href="cadastro.html">cadastrar</a></p>
+ 
+            <p class="form-link">não tem conta? <a href="cadastro.html">cadastrar</a></p>
         </div>
     </div>
-
+ 
     <script>
         function entrar() {
             var emailVar = email_input.value;
             var senhaVar = senha_input.value;
-
+ 
             if (emailVar == "" || senhaVar == "") {
                 cardErro.style.display = "block";
                 mensagem_erro.innerHTML = "Preencha todos os campos!";
                 setTimeout(sumirMensagem, 5000);
                 return false;
             }
-
+ 
             fetch("/usuarios/autenticar", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -74,7 +74,7 @@
                         sessionStorage.EMAIL_USUARIO = json.email;
                         sessionStorage.NOME_USUARIO = json.nome;
                         sessionStorage.ID_USUARIO = json.id;
-
+ 
                         window.location = "./quiz.html";
                     });
                 } else {
@@ -87,15 +87,15 @@
             }).catch(function (erro) {
                 console.log(erro);
             });
-
+ 
             return false;
         }
-
+ 
         function sumirMensagem() {
             cardErro.style.display = "none";
         }
     </script>
-
+ 
 </body>
-
+ 
 </html>

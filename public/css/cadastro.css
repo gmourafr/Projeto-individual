@@ -1,5 +1,5 @@
-/* a tela toda com a imagem de fundo */
-.paginadecadastro {
+
+.cadastro-hero {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,17 +9,17 @@
     background-position: center;
 }
 
-/* o cartaozinho branco do meio */
-.caixadecadastro {
+
+.cadastro-card {
     background: #111;
-    border: 1px solid #333;
+    border: 1px solid #ffffff;
     border-radius: 8px;
     padding: 40px;
     width: 100%;
     max-width: 420px;
 }
 
-.caixadecadastro h2 {
+.cadastro-card h2 {
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 3px;
@@ -28,32 +28,31 @@
     text-align: center;
 }
 
-/* os campos de formulario */
-.campinho {
+
+.form-field {
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
 }
 
-.campinho label {
+.form-field label {
     font-size: 13px;
     color: #aaa;
     margin-bottom: 6px;
     letter-spacing: 1px;
 }
 
-.campinho input {
+.form-field input {
     padding: 10px;
     background: #0a0a0a;
-    border: 1px solid #333;
+    border: 1px solid #ffffff;
     border-radius: 6px;
     color: #fff;
     font-size: 14px;
     font-family: 'Rajdhani', sans-serif;
 }
 
-/* o botao de enviar */
-.caixadecadastro button {
+.cadastro-card button {
     width: 100%;
     padding: 12px;
     margin-top: 8px;
@@ -69,25 +68,24 @@
     font-family: 'Rajdhani', sans-serif;
 }
 
-.caixadecadastro button:hover {
+.cadastro-card button:hover {
     background: #ddd;
 }
 
-/* o link la embaixo */
-.linkparaoutrapagina {
+.form-link {
     text-align: center;
     margin-top: 16px;
     font-size: 13px;
     color: #aaa;
 }
 
-.linkparaoutrapagina a {
+.form-link a {
     color: #fff;
     text-decoration: none;
 }
 
-/* a caixinha de erro */
-.caixadeerro {
+
+.error-card {
     display: none;
     background-color: #000;
     color: #fff;

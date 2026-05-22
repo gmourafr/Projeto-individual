@@ -1,8 +1,7 @@
-/* ── HERO ── */
+
 .historia-hero {
     text-align: center;
     padding: 100px 20px 70px;
-    border-bottom: 1px solid #222;
     position: relative;
     overflow: hidden;
 }
@@ -26,7 +25,7 @@
     font-size: 11px;
     letter-spacing: 6px;
     text-transform: uppercase;
-    color: #a7a7a7;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -40,7 +39,7 @@
 }
 
 .historia-hero .hero-subtitulo {
-    color: #a2a2a2;
+    color: #ffffff;
     font-size: 13px;
     margin-top: 20px;
     letter-spacing: 4px;
@@ -52,11 +51,6 @@
     max-width: 900px;
     margin: 0 auto;
     padding: 70px 24px;
-    border-bottom: 1px solid #ffffff;
-}
-
-.secao:last-child {
-    border-bottom: none;
 }
 
 .secao-titulo {
@@ -71,16 +65,12 @@
 }
 
 .secao-titulo::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: #1a1a1a;
+    display: none;
 }
 
 
 .perfil-card {
     background: #0a0a0a;
-    border: 1px solid #ffffff;
     border-radius: 8px;
     padding: 48px;
 }
@@ -101,7 +91,7 @@
 
 .perfil-card .perfil-nomereal {
     font-size: 13px;
-    color: #969696;
+    color: #ffffff;
     letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 32px;
@@ -110,9 +100,8 @@
 .perfil-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: #222;
-    border: 1px solid #ffffff;
+    gap: 0;
+    background: #111;
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 36px;
@@ -147,7 +136,7 @@
 }
 
 .perfil-bio b {
-    color: #ccc;
+    color: #ffffff;
     font-weight: 400;
 }
 
@@ -163,11 +152,6 @@
     grid-template-columns: 140px 1fr;
     gap: 32px;
     padding: 28px 0;
-    border-bottom: 1px solid #111;
-}
-
-.epoca-item:last-child {
-    border-bottom: none;
 }
 
 .epoca-item.epoca-destaque .epoca-periodo {
@@ -221,7 +205,7 @@
 }
 
 .epoca-texto b {
-    color: #888;
+    color: #ffffff;
     font-weight: 400;
 }
 
@@ -261,24 +245,14 @@
 
 .time-card {
     background: #111;
-    border: 1px solid #333;
     border-radius: 8px;
     padding: 24px 20px;
-    transition: border-color 0.2s;
-}
-
-.time-card:hover {
-    border-color: #fff;
-}
-
-.time-card.time-card--atual {
-    border-color: #555;
 }
 
 .time-card .time-periodo {
     font-size: 10px;
     letter-spacing: 3px;
-    color: #a5a5a5;
+    color: #ffffff;
     text-transform: uppercase;
     margin-bottom: 8px;
 }
@@ -323,13 +297,7 @@
 .legado-item {
     padding: 28px;
     background: #0a0a0a;
-    border: 1px solid #ffffff;
     border-radius: 8px;
-    transition: border-color 0.2s;
-}
-
-.legado-item:hover {
-    border-color: #ffffff;
 }
 
 .legado-item .legado-numero {
@@ -357,7 +325,6 @@
 
 .furia-banner {
     background: #0a0a0a;
-    border: 1px solid #ffffff;
     border-radius: 8px;
     padding: 48px;
     text-align: center;
@@ -407,8 +374,8 @@
     text-transform: uppercase;
     color: #ffffff;
     padding: 6px 14px;
-    border: 1px solid #2a2a2a;
     border-radius: 3px;
+    background: #1a1a1a;
 }
 
 
@@ -418,17 +385,17 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     color: #ffffff;
-    border: 1px solid #333;
     padding: 10px 20px;
     border-radius: 4px;
     text-decoration: none;
-    transition: color 0.2s, border-color 0.2s;
+    background: #1a1a1a;
+    transition: background 0.2s;
 }
 
 .canal-link:hover {
-    color: #fff;
-    border-color: #fff;
+    background: #2a2a2a;
 }
+
 
 
 .videos-grid {
@@ -445,19 +412,19 @@
     text-transform: uppercase;
 }
 
+
 .video-card {
     display: flex;
     flex-direction: column;
     background: #111;
-    border: 1px solid #2a2a2a;
     border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
-    transition: border-color 0.2s, transform 0.2s;
+    transition: transform 0.2s, background 0.2s;
 }
 
 .video-card:hover {
-    border-color: #fff;
+    background: #1a1a1a;
     transform: translateY(-2px);
 }
 
@@ -473,16 +440,14 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: brightness(0.6);
+    filter: brightness(0.75);
     transition: filter 0.3s, transform 0.3s;
 }
 
 .video-card:hover .video-thumb img {
-    filter: brightness(0.85);
+    filter: brightness(0.95);
     transform: scale(1.04);
 }
-
-
 
 .video-tag {
     position: absolute;
@@ -513,9 +478,9 @@
     color: rgba(255,255,255,0.9);
 }
 
+
 .video-info {
-    padding: 14px 16px 16px;
-    flex: 1;
+    padding: 12px 14px 14px;
 }
 
 .video-titulo {
@@ -524,7 +489,7 @@
     color: #fff;
     letter-spacing: 0.5px;
     line-height: 1.5;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .video-descricao {
@@ -545,8 +510,4 @@
 .videos-fonte a {
     color: #ffffff;
     text-decoration: none;
-}
-
-.videos-fonte a:hover {
-    color: #ffffff;
 }
