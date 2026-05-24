@@ -90,8 +90,8 @@ Projeto-individual/
 
 **1. Clone o repositório**
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/gmourafr/Projeto-individual.git
+cd Projeto-individual
 ```
 
 **2. Instale as dependências**
@@ -103,7 +103,7 @@ npm install
 
 Crie o banco e as tabelas rodando o script:
 ```
-src/database/script-tabelas.sql
+src/database/projetofallen
 ```
 
 **4. Configure as variáveis de ambiente**
@@ -140,7 +140,6 @@ O projeto utiliza as seguintes tabelas:
 |---|---|
 | `usuarios` | Dados de cadastro dos usuários |
 | `logins` | Registro de logins realizados |
-| `times` | Times e vitórias do FalleN |
 | `quiz_perguntas` | Perguntas do quiz |
 | `quiz_tentativas` | Tentativas realizadas por usuário |
 | `quiz_respostas` | Respostas individuais por tentativa |
