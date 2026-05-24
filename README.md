@@ -1,5 +1,4 @@
 # 🎯 Projeto Individual — FalleN
-
 Um projeto individual desenvolvido com o objetivo de apresentar a história de Gabriel "FalleN" Toledo, jogador da FURIA Esports, com quiz interativo, calculadora de K/D e curiosidades sobre um dos maiores nomes da história do Counter-Strike.
 
 ---
@@ -101,9 +100,9 @@ npm install
 
 **3. Configure o banco de dados**
 
-Crie o banco e as tabelas rodando o script:
-```
-src/database/projetofallen
+Crie o banco e as tabelas rodando o script SQL:
+```bash
+mysql -u root -p < src/database/projetofallen.sql
 ```
 
 **4. Configure as variáveis de ambiente**
@@ -134,7 +133,7 @@ http://localhost:3333
 
 ## 🗄️ Banco de Dados
 
-O projeto utiliza as seguintes tabelas:
+### Tabelas
 
 | Tabela | Descrição |
 |---|---|
@@ -144,8 +143,42 @@ O projeto utiliza as seguintes tabelas:
 | `quiz_tentativas` | Tentativas realizadas por usuário |
 | `quiz_respostas` | Respostas individuais por tentativa |
 
+### Relacionamentos
+
+- `usuarios` **1:N** `logins` — um usuário pode ter vários registros de login (`fk_usuario`)
+- `usuarios` **1:N** `quiz_tentativas` — um usuário pode jogar o quiz várias vezes (`fk_usuario`)
+- `quiz_tentativas` **1:N** `quiz_respostas` — cada tentativa contém várias respostas (`fk_tentativa`)
+- `quiz_perguntas` **1:N** `quiz_respostas` — cada pergunta pode ser respondida em várias tentativas (`fk_pergunta`)
+
+> A tabela `quiz_respostas` resolve o relacionamento **N:N** entre `quiz_tentativas` e `quiz_perguntas`, atuando como tabela intermediária.
+
+### DER (Diagrama Entidade-Relacionamento)
+
+```
+quiz_perguntas          logins                  usuarios
+──────────────          ──────────────          ──────────────────
+id INT (PK)             id INT (PK)             id INT (PK)
+pergunta TEXT           fk_usuario INT (FK) ────► id
+opcao_a VARCHAR(255)    data_login DATETIME     nome VARCHAR(100)
+opcao_b VARCHAR(255)                            email VARCHAR(100)
+opcao_c VARCHAR(255)                            senha VARCHAR(255)
+opcao_d VARCHAR(255)                                │
+resposta_correta CHAR       │                       │
+        │                   │                       │
+        │ 1:N               │ 1:N                   │ 1:N
+        ▼                   └───────────────────────┘
+quiz_respostas                                  quiz_tentativas
+──────────────────                              ──────────────────
+id INT (PK)                                     id INT (PK)
+fk_tentativa INT (FK) ─────────────────────────► id
+fk_pergunta INT (FK) ◄── (de quiz_perguntas)    fk_usuario INT (FK)
+resposta_dada CHAR(1)                           data_tentativa DATETIME
+acertou TINYINT(1)                              total_acertos INT
+                                                total_perguntas INT
+```
+
 ---
 
 ## 👤 Autor
 
-Desenvolvido por **[Guilherme Ferreira Moura]** — São Paulo Tech School
+Desenvolvido por **Guilherme Ferreira Moura** — São Paulo Tech School
