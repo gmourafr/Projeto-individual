@@ -1,4 +1,4 @@
-/* imagem grande da capa */
+
 .hero {
     background-image: url('../assets/imgs/fallen-na-furia-csgo.jpg');
     background-size: cover;
@@ -14,12 +14,12 @@
 .hero-escurecimento {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.6) 65%, #0a0a0a 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(10,10,10,0.6) 65%, #0a0a0a 100%);
 }
 
 .hero-conteudo {
     position: relative;
-    z-index: 2;
+   
 }
 
 .hero-nomereal {
@@ -72,20 +72,6 @@
     background: #ddd;
 }
 
-.button-transparente {
-    padding: 11px 28px;
-    background: transparent;
-    color: #fff;
-    border: 1px solid #b3b1b1;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 4px;
-    font-family: 'Rajdhani', sans-serif;
-    transition: border-color 0.2s;
-}
 
 .button-transparente:hover {
     border-color: #fff;
@@ -154,14 +140,14 @@
 
 
 
-.quiz-cta {
+.quiz-titulo {
     max-width: 600px;
     margin: 0 auto;
     padding: 60px 24px 80px;
     text-align: center;
 }
 
-.quiz-cta-label {
+.quiz-subtitulo {
     font-size: 11px;
     letter-spacing: 5px;
     color: #ffffff;
@@ -169,7 +155,7 @@
     margin-bottom: 12px;
 }
 
-.quiz-cta h2 {
+.quiz-titulo h2 {
     font-size: 26px;
     font-weight: 700;
     letter-spacing: 4px;
@@ -178,7 +164,7 @@
     margin-bottom: 12px;
 }
 
-.quiz-cta p {
+.quiz-titulo  p {
     color: #ffffff;
     line-height: 1.0;
     font-size: 15px;
