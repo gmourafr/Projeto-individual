@@ -58,9 +58,9 @@
 
     <script>
         function cadastrar() {
-            var nomeVar = nome_input.value;
-            var emailVar = email_input.value;
-            var senhaVar = senha_input.value;
+            var nomeVar = nome_input.value.trim();
+            var emailVar = email_input.value.trim();
+            var senhaVar = senha_input.value.trim();
             var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
             var campos = [
@@ -78,6 +78,21 @@
                     return false;
                 }
             }
+
+            if (!emailVar.includes("@") || !emailVar.includes(".com")) {
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML = "Insira um e-mail válido contendo @ e .com.";
+                setTimeout(sumirMensagem, 5000);
+                return false;
+            }
+
+            if (senhaVar == null || senhaVar.trim() === "") {
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML = "A senha não pode ser nula ou vazia.";
+                setTimeout(sumirMensagem, 5000);
+                return false;
+            }
+
             if (senhaVar !== confirmacaoSenhaVar) {
                 cardErro.style.display = "block";
                 mensagem_erro.innerHTML = "As senhas não coincidem!";
