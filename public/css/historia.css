@@ -2,31 +2,20 @@
 .historia-hero {
     text-align: center;
     padding: 100px 20px 70px;
-    position: relative;
     overflow: hidden;
 }
-
-.historia-hero::before {
-    content: 'FALLEN';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 220px;
-    font-weight: 700;
-    color: #fff;
-    opacity: 0.02;
-    letter-spacing: 20px;
-    white-space: nowrap;
-    pointer-events: none;
-}
-
-.historia-hero .hero-eyebrow {
+.historia-hero .hero-eyebrow,
+.historia-hero .hero-subtitulo {
     font-size: 11px;
     letter-spacing: 6px;
     text-transform: uppercase;
-    color: #ffffff;
-    margin-bottom: 20px;
+    color: #fff;
+}
+
+.historia-hero .hero-subtitulo {
+    font-size: 13px;
+    letter-spacing: 4px;
+    margin-top: 20px;
 }
 
 .historia-hero h1 {
@@ -38,13 +27,8 @@
     line-height: 1.1;
 }
 
-.historia-hero .hero-subtitulo {
-    color: #ffffff;
-    font-size: 13px;
-    margin-top: 20px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-}
+.historia-hero .hero-eyebrow { margin-bottom: 20px; }
+
 
 
 .secao {
@@ -57,16 +41,10 @@
     font-size: 21px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #fff;
     margin-bottom: 36px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
 }
 
-.secao-titulo::after {
-    display: none;
-}
 
 
 .perfil-card {
@@ -75,7 +53,7 @@
     padding: 48px;
 }
 
-.perfil-card .perfil-nome {
+.perfil-nome {
     font-size: 36px;
     font-weight: 700;
     letter-spacing: 6px;
@@ -84,23 +62,19 @@
     margin-bottom: 8px;
 }
 
-.perfil-card .perfil-nome--pequeno {
-    font-size: 26px;
-    margin-bottom: 6px;
-}
+.perfil-nome--pequeno { font-size: 26px; }
 
-.perfil-card .perfil-nomereal {
+.perfil-nomereal {
     font-size: 13px;
-    color: #ffffff;
     letter-spacing: 3px;
     text-transform: uppercase;
+    color: #fff;
     margin-bottom: 32px;
 }
 
 .perfil-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
     background: #111;
     border-radius: 4px;
     overflow: hidden;
@@ -108,7 +82,6 @@
 }
 
 .perfil-stat {
-    background: #111;
     padding: 20px 16px;
     text-align: center;
 }
@@ -124,28 +97,20 @@
     font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #fff;
     margin-top: 4px;
 }
 
 .perfil-bio {
     font-size: 15px;
-    color: #ffffff;
+    color: #fff;
     line-height: 1.9;
     letter-spacing: 0.5px;
 }
 
-.perfil-bio b {
-    color: #ffffff;
-    font-weight: 400;
-}
 
 
-.epocas-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
+.epocas-lista { display: flex; flex-direction: column; gap: 2px; }
 
 .epoca-item {
     display: grid;
@@ -154,60 +119,32 @@
     padding: 28px 0;
 }
 
-.epoca-item.epoca-destaque .epoca-periodo {
-    color: #fff;
-}
-
-.epoca-item.epoca-destaque .epoca-nome {
-    color: #fff;
-}
-
 .epoca-periodo {
     font-size: 11px;
     letter-spacing: 3px;
-    color: #ffffff;
+    color: #fff;
     text-transform: uppercase;
     padding-top: 4px;
     line-height: 1.6;
 }
 
-.epoca-badge {
-    display: inline-block;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: #000;
-    background: #fff;
-    padding: 2px 7px;
-    border-radius: 2px;
-    margin-top: 6px;
-    font-weight: 700;
-}
-
-.epoca-conteudo {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
+.epoca-conteudo { display: flex; flex-direction: column; gap: 8px; }
 
 .epoca-nome {
     font-size: 18px;
     font-weight: 700;
-    color: #ffffff;
+    color: #fff;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .epoca-texto {
     font-size: 14px;
-    color: #ffffff;
+    color: #fff;
     line-height: 1.8;
     max-width: 660px;
 }
 
-.epoca-texto b {
-    color: #ffffff;
-    font-weight: 400;
-}
 
 
 .citacao-block {
@@ -230,11 +167,12 @@
     display: block;
     font-size: 11px;
     letter-spacing: 3px;
-    color: #ffffff;
+    color: #fff;
     margin-top: 16px;
     text-transform: uppercase;
     font-style: normal;
 }
+
 
 
 .times-grid {
@@ -249,15 +187,15 @@
     padding: 24px 20px;
 }
 
-.time-card .time-periodo {
+.time-periodo {
     font-size: 10px;
     letter-spacing: 3px;
-    color: #ffffff;
+    color: #fff;
     text-transform: uppercase;
     margin-bottom: 8px;
 }
 
-.time-card .time-nome {
+.time-nome {
     font-size: 18px;
     font-weight: 700;
     color: #fff;
@@ -266,26 +204,27 @@
     margin-bottom: 8px;
 }
 
-.time-card .time-descricao {
+.time-descricao {
     font-size: 12px;
-    color: #ffffff;
+    color: #fff;
     line-height: 1.7;
 }
 
-.time-card .time-titulos {
+.time-titulos {
     margin-top: 16px;
     font-size: 10px;
     letter-spacing: 3px;
-    color: #ffffff;
+    color: #fff;
     text-transform: uppercase;
 }
 
-.time-card .time-titulos span {
+.time-titulos span {
     color: #fff;
     font-size: 22px;
     display: block;
     margin-bottom: 2px;
 }
+
 
 
 .legado-grid {
@@ -300,7 +239,7 @@
     border-radius: 8px;
 }
 
-.legado-item .legado-numero {
+.legado-numero {
     font-size: 42px;
     font-weight: 700;
     color: #fff;
@@ -308,19 +247,20 @@
     margin-bottom: 4px;
 }
 
-.legado-item .legado-label {
+.legado-label {
     font-size: 10px;
     letter-spacing: 3px;
-    color: #ffffff;
+    color: #fff;
     text-transform: uppercase;
     margin-bottom: 12px;
 }
 
-.legado-item .legado-texto {
+.legado-texto {
     font-size: 13px;
-    color: #ffffff;
+    color: #fff;
     line-height: 1.7;
 }
+
 
 
 .furia-banner {
@@ -330,15 +270,15 @@
     text-align: center;
 }
 
-.furia-banner .furia-label {
+.furia-label {
     font-size: 11px;
     letter-spacing: 5px;
-    color: #ffffff;
+    color: #fff;
     text-transform: uppercase;
     margin-bottom: 16px;
 }
 
-.furia-banner .furia-nome {
+.furia-nome {
     font-size: 42px;
     font-weight: 700;
     color: #fff;
@@ -347,17 +287,12 @@
     margin-bottom: 20px;
 }
 
-.furia-banner .furia-texto {
+.furia-texto {
     font-size: 14px;
-    color: #ffffff;
+    color: #fff;
     line-height: 1.9;
     max-width: 600px;
     margin: 0 auto;
-}
-
-.furia-banner .furia-texto b {
-    color: #ffffff;
-    font-weight: 400;
 }
 
 .furia-trofeus {
@@ -372,11 +307,12 @@
     font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #fff;
     padding: 6px 14px;
     border-radius: 3px;
     background: #1a1a1a;
 }
+
 
 
 .canal-link {
@@ -384,7 +320,7 @@
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #fff;
     padding: 10px 20px;
     border-radius: 4px;
     text-decoration: none;
@@ -392,9 +328,7 @@
     transition: background 0.2s;
 }
 
-.canal-link:hover {
-    background: #2a2a2a;
-}
+.canal-link:hover { background: #2a2a2a; }
 
 
 
@@ -406,12 +340,11 @@
 
 .videos-subtitulo {
     font-size: 13px;
-    color: #ffffff;
+    color: #fff;
     letter-spacing: 2px;
-    margin-bottom: 32px;
     text-transform: uppercase;
+    margin-bottom: 32px;
 }
-
 
 .video-card {
     display: flex;
@@ -439,7 +372,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
     filter: brightness(0.75);
     transition: filter 0.3s, transform 0.3s;
 }
@@ -449,20 +381,6 @@
     transform: scale(1.04);
 }
 
-.video-tag {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: #ffffff;
-    background: #000000;
-    padding: 3px 8px;
-    border-radius: 2px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
 .video-play {
     position: absolute;
     inset: 0;
@@ -470,18 +388,13 @@
     align-items: center;
     justify-content: center;
     font-size: 22px;
-    color: rgba(255,255,255,0);
+    color: transparent;
     transition: color 0.2s;
 }
 
-.video-card:hover .video-play {
-    color: rgba(255,255,255,0.9);
-}
+.video-card:hover .video-play { color: rgba(255,255,255,0.9); }
 
-
-.video-info {
-    padding: 12px 14px 14px;
-}
+.video-info { padding: 12px 14px 14px; }
 
 .video-titulo {
     font-size: 12px;
@@ -494,20 +407,6 @@
 
 .video-descricao {
     font-size: 11px;
-    color: #ffffff;
+    color: #fff;
     line-height: 1.6;
-}
-
-.videos-fonte {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: #ffffff;
-    text-transform: uppercase;
-    text-align: center;
-    margin-top: 32px;
-}
-
-.videos-fonte a {
-    color: #ffffff;
-    text-decoration: none;
 }

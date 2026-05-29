@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - FalleN</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <link rel="stylesheet" href="./css/dashboards.css" />
 </head>
 
@@ -27,7 +28,6 @@
 
         <h2>Quiz — Resultados</h2>
 
-        
         <div class="cards">
             <div class="card">
                 <p>Melhor Resultado</p>
@@ -43,162 +43,81 @@
             </div>
         </div>
 
-        
         <div class="grafico-box">
             <h2>Acertos vs Erros (geral)</h2>
             <canvas id="grafico-pizza"></canvas>
         </div>
 
-        
-        <div class="grafico-box">
-            <h2>Acertos por Tentativa</h2>
-            <canvas id="grafico-tentativas"></canvas>
-        </div>
-
     </div>
 
-    <script>
-
-       
-        var USUARIO_ID = sessionStorage.ID_USUARIO;
-
-       
-        fetch('/quiz/kpis/' + USUARIO_ID)
-            .then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (dados) {
-                        document.getElementById('kpi-melhor').textContent =
-                            dados.melhor_acertos + '/' + dados.total_perguntas;
-                        document.getElementById('kpi-tentativas').textContent =
-                            dados.total_tentativas;
-                        document.getElementById('kpi-pct').textContent =
-                            dados.pct_acerto + '%';
-
-                        plotarPizza(dados.soma_acertos, dados.soma_erros);
-                    });
-                } else {
-                    console.error('Erro ao buscar KPIs');
-                }
-            })
-            .catch(function (error) {
-                console.error('Erro: ' + error.message);
-            });
-
-    
-        fetch('/quiz/tentativas/' + USUARIO_ID)
-            .then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (dados) {
-                        plotarTentativas(dados);
-                    });
-                } else {
-                    console.error('Erro ao buscar tentativas');
-                }
-            })
-            .catch(function (error) {
-                console.error('Erro: ' + error.message);
-            });
-
-       
-        function plotarPizza(acertos, erros) {
-            new Chart(document.getElementById('grafico-pizza'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Acertos', 'Erros'],
-                    datasets: [{
-                        data: [acertos, erros],
-                        backgroundColor: ['#ffffff', '#333333'],
-                        borderColor: ['#ffffff', '#555555'],
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#fff',
-                                font: { family: "'Rajdhani', sans-serif", size: 14, weight: '700' }
-                            }
-                        },
-                        tooltip: {
-                            backgroundColor: '#000',
-                            borderColor: '#333',
-                            borderWidth: 1,
-                            titleColor: '#fff',
-                            bodyColor: '#aaa',
-                            callbacks: {
-                                label: function (ctx) {
-                                    var total = acertos + erros;
-                                    var pct = ((ctx.raw / total) * 100).toFixed(1);
-                                    return ctx.label + ': ' + ctx.raw + ' (' + pct + '%)';
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-    
-        function plotarTentativas(dados) {
-            var labels = dados.map(function (d, i) { return 'Tentativa ' + (i + 1) + ' (' + d.data + ')'; });
-            var valores = dados.map(function (d) { return d.total_acertos; });
-            var maxPerguntas = dados.length > 0 ? dados[0].total_perguntas : 5;
-
-            new Chart(document.getElementById('grafico-tentativas'), {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Acertos',
-                        data: valores,
-                        borderColor: '#ffffff',
-                        backgroundColor: 'rgba(255,255,255,0.05)',
-                        pointBackgroundColor: '#ffffff',
-                        pointRadius: 5,
-                        tension: 0.3,
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            backgroundColor: '#000',
-                            borderColor: '#333',
-                            borderWidth: 1,
-                            titleColor: '#fff',
-                            bodyColor: '#aaa',
-                            callbacks: {
-                                label: function (ctx) {
-                                    return 'Acertos: ' + ctx.raw + '/' + maxPerguntas;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            grid: { color: '#1a1a1a' },
-                            ticks: { color: '#555', font: { family: "'Rajdhani', sans-serif", size: 12, weight: '700' } }
-                        },
-                        y: {
-                            min: 0,
-                            max: maxPerguntas,
-                            grid: { color: '#1a1a1a' },
-                            ticks: {
-                                color: '#555',
-                                stepSize: 1,
-                                font: { family: "'Rajdhani', sans-serif", size: 13 }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-    </script>
-
 </body>
+
 </html>
+
+<script>
+    var USUARIO_ID = sessionStorage.ID_USUARIO;
+
+    window.onload = obterKpis();
+
+    function obterKpis() {
+        fetch('/quiz/kpis/' + USUARIO_ID, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log('Dados recebidos: ' + JSON.stringify(resposta));
+
+                    document.getElementById('kpi-melhor').textContent =
+                        resposta.melhor_acertos + '/' + resposta.total_perguntas;
+                    document.getElementById('kpi-tentativas').textContent =
+                        resposta.total_tentativas;
+                    document.getElementById('kpi-pct').textContent =
+                        resposta.pct_acerto + '%';
+
+                    plotarPizza(resposta.soma_acertos, resposta.soma_erros);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error('Erro na obtenção dos KPIs: ' + error.message);
+        });
+    }
+
+    function plotarPizza(acertos, erros) {
+        console.log('Iniciando plotagem do gráfico de pizza...');
+
+        var dados = {
+            labels: ['Acertos', 'Erros'],
+            datasets: [{
+                data: [acertos, erros],
+                backgroundColor: ['#ffffff', '#333333'],
+                borderColor: ['#ffffff', '#555555'],
+                borderWidth: 2
+            }]
+        };
+
+        var config = {
+            type: 'doughnut',
+            data: dados,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#fff' }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (ctx) {
+                                var total = acertos + erros;
+                                var pct = ((ctx.raw / total) * 100).toFixed(1);
+                                return ctx.label + ': ' + ctx.raw + ' (' + pct + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        new Chart(document.getElementById('grafico-pizza'), config);
+    }
+</script>

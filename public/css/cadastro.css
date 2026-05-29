@@ -12,7 +12,6 @@
 
 .cadastro-card {
     background: #111;
-    border: 1px solid #ffffff;
     border-radius: 8px;
     padding: 40px;
     width: 100%;
@@ -35,18 +34,12 @@
     margin-bottom: 16px;
 }
 
-.form-field label {
-    font-size: 13px;
-    color: #aaa;
-    margin-bottom: 6px;
-    letter-spacing: 1px;
-}
 
 .form-field input {
+    border: none !important;
+    outline: none !important;
     padding: 10px;
-    background: #0a0a0a;
-    border: 1px solid #ffffff;
-    border-radius: 6px;
+    background: #000000;
     color: #fff;
     font-size: 14px;
     font-family: 'Rajdhani', sans-serif;
@@ -58,29 +51,23 @@
     margin-top: 8px;
     background: #fff;
     color: #000;
-    border: none;
-    border-radius: 6px;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    cursor: pointer;
+    
     font-family: 'Rajdhani', sans-serif;
 }
 
-.cadastro-card button:hover {
-    background: #ddd;
-}
 
 .form-link {
     text-align: center;
     margin-top: 16px;
     font-size: 13px;
-    color: #aaa;
 }
 
 .form-link a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -96,5 +83,5 @@
     text-align: center;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 4px;
+    
 }
